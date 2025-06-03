@@ -3,36 +3,13 @@
 import Image from "next/image";
 import { type FieldValues, useForm } from "react-hook-form";
 import MathMarkdown from "./MathMarkdown";
-
-interface IOptions {
-  A: string | number;
-  B: string | number;
-  C: string | number;
-  D: string | number;
-}
+import { IOptions, IQuestions } from "@/utils/types";
 
 interface QuestionCardProps {
-  question: string;
-  paragraph: string;
-  options: IOptions;
-  answer: string;
-  explanation: string;
-  visualsType: string;
-  visualsSVG: string;
-  domain: string;
-  difficulty: string;
+  question: IQuestions;
 }
 
-const QuestionCard = ({
-  question,
-  paragraph,
-  options,
-  answer,
-  explanation,
-  visualsSVG,
-  domain,
-  difficulty,
-}: QuestionCardProps) => {
+const QuestionCard = ({ question }: QuestionCardProps) => {
   const { register, handleSubmit } = useForm();
 
   const handleSubmitForm = (data: FieldValues) => {
@@ -55,29 +32,30 @@ const QuestionCard = ({
   return (
     <div className="card w-full max-w-3xl mx-auto shadow-md my-8 p-5">
       <div className="card-title flex flex-row items-center justify-between pb-2 space-y-0 flex-wrap">
-        <div className="badge px-3 py-1 badge-dash">{domain}</div>
+        <div className="badge px-3 py-1 badge-dash">{question.domain}</div>
         <div
           className={`badge badge-outline px-3 py-1 ${getDifficultyColor(
-            difficulty
+            question.difficulty
           )}`}
         >
-          {difficulty}
+          {question.difficulty}
         </div>
       </div>
       <div className="card-body space-y-4">
         <div className="space-y-2">
           <h2 className="text-xl font-semibold leading-tight">
-            <MathMarkdown markdown={question} />
+            <MathMarkdown markdown={question.question.question} />
           </h2>
-          {paragraph !== "null" && (
-            <p className="text-gray-600 dark:text-gray-300">{paragraph}</p>
+          {question.question.paragraph !== "null" && (
+            <p className="text-gray-600 dark:text-gray-300">
+              {question.question.paragraph}
+            </p>
           )}
         </div>
-
-        {visualsSVG !== "null" && (
+        {question.visuals.svg_content !== "null" && (
           <div className="flex justify-center my-4">
             <Image
-              src={visualsSVG || "/placeholder.svg"}
+              src={question.visuals.svg_content || "/placeholder.svg"}
               width={300}
               height={200}
               alt="Question diagram"
@@ -85,10 +63,9 @@ const QuestionCard = ({
             />
           </div>
         )}
-
         <form onSubmit={handleSubmit(handleSubmitForm)} className="space-y-6">
           <ul className="space-y-3">
-            {Object.keys(options).map((key) => (
+            {Object.keys(question.question.choices).map((key) => (
               <li
                 key={key}
                 className="flex items-center space-x-3 p-3 rounded-md border border-gray-200 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800/50 transition-colors"
@@ -108,7 +85,11 @@ const QuestionCard = ({
                 >
                   <span className="font-bold mr-2">{key}.</span>
                   <MathMarkdown
-                    markdown={options[key as keyof IOptions] as string}
+                    markdown={
+                      "$" +
+                      question.question.choices[key as keyof IOptions] +
+                      "$"
+                    }
                   />
                 </label>
               </li>

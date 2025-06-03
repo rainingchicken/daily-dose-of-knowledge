@@ -6,16 +6,18 @@ export interface IQuestions {
     svg_content: string;
   };
   question: {
-    choices: {
-      A: string | number;
-      B: string | number;
-      C: string | number;
-      D: string | number;
-    };
+    choices: IOptions;
     question: string;
     paragraph: string;
     explanation: string;
     correct_answer: "A" | "B" | "C" | "D";
   };
   difficulty: string;
+}
+
+export interface IOptions {
+  A: string;
+  B: string;
+  C: string;
+  D: string;
 }

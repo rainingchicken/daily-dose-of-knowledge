@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
-import MathClientPage from "./client";
 import LoadingSkeleton from "./LoadingSkeleton";
 import { getSATQuestions } from "@/utils/api";
+import QuestionCard from "@/components/QuestionCard";
 
 const page = () => {
   return (
@@ -20,5 +20,6 @@ export default page;
 
 const MathQuestion = async () => {
   const data = await getSATQuestions("math");
-  return <MathClientPage question={data} />;
+  console.log(data);
+  return <QuestionCard question={data} />;
 };
