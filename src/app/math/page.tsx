@@ -6,6 +6,7 @@ import { getSATQuestions } from "@/utils/api";
 const page = () => {
   return (
     <Suspense fallback={<LoadingSkeleton />}>
+      <h1 className="text-center">Daily Does of Math</h1>
       <MathQuestion />
     </Suspense>
   );

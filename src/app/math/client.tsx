@@ -11,9 +11,14 @@ const MathClientPage = ({ question }: MathClientPageProps) => {
   return (
     <QuestionCard
       question={question.question.question}
-      //   options={question.options}
-      //   answer={question.answer}
-      //   explanation={question.explanation}
+      paragraph={question.question.paragraph}
+      options={question.question.choices}
+      answer={question.question.correct_answer}
+      explanation={question.question.explanation}
+      visualsType={question.visuals.type}
+      visualsSVG={question.visuals.svg_content}
+      domain={question.domain}
+      difficulty={question.difficulty}
     />
   );
 };

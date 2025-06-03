@@ -2,8 +2,8 @@ export interface IQuestions {
   id: string;
   domain: string;
   visuals: {
-    type: string | null;
-    svg_content: string | null;
+    type: string;
+    svg_content: string;
   };
   question: {
     choices: {
