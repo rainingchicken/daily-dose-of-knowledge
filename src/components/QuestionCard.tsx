@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { type FieldValues, useForm } from "react-hook-form";
-import ReactMarkdown from "react-markdown";
+import MathMarkdown from "./MathMarkdown";
 
 interface IOptions {
   A: string | number;
@@ -67,7 +67,7 @@ const QuestionCard = ({
       <div className="card-body space-y-4">
         <div className="space-y-2">
           <h2 className="text-xl font-semibold leading-tight">
-            <ReactMarkdown>{question}</ReactMarkdown>
+            <MathMarkdown markdown={question} />
           </h2>
           {paragraph !== "null" && (
             <p className="text-gray-600 dark:text-gray-300">{paragraph}</p>
@@ -107,7 +107,9 @@ const QuestionCard = ({
                   className="label flex-1 cursor-pointer font-medium"
                 >
                   <span className="font-bold mr-2">{key}.</span>
-                  {options[key as keyof IOptions]}
+                  <MathMarkdown
+                    markdown={options[key as keyof IOptions] as string}
+                  />
                 </label>
               </li>
             ))}
