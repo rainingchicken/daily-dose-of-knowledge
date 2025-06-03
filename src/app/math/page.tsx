@@ -5,10 +5,14 @@ import { getSATQuestions } from "@/utils/api";
 
 const page = () => {
   return (
-    <Suspense fallback={<LoadingSkeleton />}>
-      <h1 className="text-center">Daily Does of Math</h1>
-      <MathQuestion />
-    </Suspense>
+    <>
+      <h1 className="text-center text-accent text-2xl font-bold m-5">
+        Daily Does of Math
+      </h1>
+      <Suspense fallback={<LoadingSkeleton />}>
+        <MathQuestion />
+      </Suspense>
+    </>
   );
 };
 

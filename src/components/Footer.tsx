@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="text-center">
+    <div className="text-center m-5">
       <p>
         Special Thanks to
         <a href="https://github.com/Anas099X/OpenSAT?tab=readme-ov-file">
