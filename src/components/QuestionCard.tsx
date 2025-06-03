@@ -54,7 +54,7 @@ const QuestionCard = ({
 
   return (
     <div className="card w-full max-w-3xl mx-auto shadow-md my-8 p-5">
-      <div className="card-title flex flex-row items-center justify-between pb-2 space-y-0">
+      <div className="card-title flex flex-row items-center justify-between pb-2 space-y-0 flex-wrap">
         <div className="badge px-3 py-1 badge-dash">{domain}</div>
         <div
           className={`badge badge-outline px-3 py-1 ${getDifficultyColor(
