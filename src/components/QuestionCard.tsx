@@ -1,5 +1,5 @@
-import { IQuestions } from "@/utils/types";
 import React from "react";
+import ReactMarkdown from "react-markdown";
 
 interface QuestionCardProps {
   question: string;
@@ -17,7 +17,7 @@ QuestionCardProps) => {
   return (
     <div>
       <ul>
-        <li>{question}</li>
+        <ReactMarkdown>{question}</ReactMarkdown>
         {/* <li>
           {Object.keys(options).map((key) => (
             <p key={key}>{options[key]}</p>
