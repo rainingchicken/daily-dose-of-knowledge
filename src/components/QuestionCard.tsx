@@ -52,7 +52,7 @@ const QuestionCard = ({ question }: QuestionCardProps) => {
             </p>
           )}
         </div>
-        {question.visuals.svg_content !== "null" && (
+        {question.visuals && question.visuals.svg_content !== "null" && (
           <div className="flex justify-center my-4">
             <Image
               src={question.visuals.svg_content || "/placeholder.svg"}
