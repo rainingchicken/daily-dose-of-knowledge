@@ -8,11 +8,11 @@ const QuestionCardSkeleton = () => {
           <div className="skeleton h-8 w-24"></div>
         </div>
 
+        {/* Optional paragraph */}
+        <div className="skeleton h-20 w-full mb-6"></div>
+
         {/* Question title */}
         <div className="skeleton h-10 w-full mb-4"></div>
-
-        {/* Optional paragraph */}
-        <div className="skeleton h-6 w-3/4 mb-6"></div>
 
         {/* Optional image */}
         <div className="flex justify-center mb-6">
