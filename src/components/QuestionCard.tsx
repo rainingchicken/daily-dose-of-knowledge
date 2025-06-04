@@ -4,6 +4,7 @@ import Image from "next/image";
 import { type FieldValues, useForm } from "react-hook-form";
 import MathMarkdown from "./MathMarkdown";
 import { IOptions, IQuestions } from "@/utils/types";
+import { useState } from "react";
 
 interface QuestionCardProps {
   question: IQuestions;
@@ -11,9 +12,16 @@ interface QuestionCardProps {
 
 const QuestionCard = ({ question }: QuestionCardProps) => {
   const { register, handleSubmit } = useForm();
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
 
   const handleSubmitForm = (data: FieldValues) => {
-    console.log(data);
+    if (data.options === question.question.correct_answer) {
+      setIsCorrect(true);
+    } else {
+      setIsCorrect(false);
+    }
+    setHasSubmitted(true);
   };
 
   const getDifficultyColor = (difficulty: string) => {
@@ -97,14 +105,34 @@ const QuestionCard = ({ question }: QuestionCardProps) => {
           </ul>
 
           <div className="card-actions px-0 pt-2">
-            <button
-              type="submit"
-              className=" btn w-full btn-accent btn-outline"
-            >
-              Submit Answer
-            </button>
+            {!hasSubmitted && (
+              <button
+                type="submit"
+                className=" btn w-full btn-accent btn-outline"
+              >
+                Submit Answer
+              </button>
+            )}
           </div>
         </form>
+        {hasSubmitted && (
+          <div
+            className={`card card-border ${
+              isCorrect ? "border-success" : "border-error"
+            } bg-base-100`}
+          >
+            <div className="card-body">
+              <h2
+                className={`card-title text-center justify-center ${
+                  isCorrect ? "text-success" : "text-error"
+                }`}
+              >
+                {isCorrect ? "Correct!" : "Wrong"}
+              </h2>
+              <MathMarkdown markdown={`${question.question.explanation}`} />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
