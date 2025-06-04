@@ -5,5 +5,6 @@ export const getSATQuestions = async (subject: "math" | "english") => {
   const parsedResult = await result.json();
   const randomArray = Math.floor(Math.random() * parsedResult[subject].length);
   const randomResult = parsedResult[subject][randomArray];
+  console.log(randomResult);
   return randomResult;
 };

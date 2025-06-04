@@ -20,6 +20,5 @@ export default page;
 
 const MathQuestion = async () => {
   const data = await getSATQuestions("math");
-  console.log(data);
-  return <QuestionCard question={data} />;
+  return <QuestionCard question={data} subject="math" />;
 };

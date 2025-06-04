@@ -8,9 +8,10 @@ import { useState } from "react";
 
 interface QuestionCardProps {
   question: IQuestions;
+  subject: "math" | "english";
 }
 
-const QuestionCard = ({ question }: QuestionCardProps) => {
+const QuestionCard = ({ question, subject }: QuestionCardProps) => {
   const { register, handleSubmit } = useForm();
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
@@ -89,15 +90,13 @@ const QuestionCard = ({ question }: QuestionCardProps) => {
                 />
                 <label
                   htmlFor={`option-${key}`}
-                  className="label flex-1 cursor-pointer font-medium"
+                  className="label flex-1 cursor-pointer whitespace-normal"
                 >
                   <span className="font-bold mr-2">{key}.</span>
                   <MathMarkdown
-                    markdown={
-                      "$" +
-                      question.question.choices[key as keyof IOptions] +
-                      "$"
-                    }
+                    markdown={`${subject === "math" ? "$" : ""}${
+                      question.question.choices[key as keyof IOptions]
+                    }${subject === "math" ? "$" : ""}`}
                   />
                 </label>
               </li>
