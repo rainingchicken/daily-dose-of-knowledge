@@ -77,7 +77,13 @@ const QuestionCard = ({ question, subject }: QuestionCardProps) => {
             {Object.keys(question.question.choices).map((key) => (
               <li
                 key={key}
-                className="flex items-center space-x-3 p-3 rounded-md border border-gray-200 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800/50 transition-colors"
+                className={`flex items-center space-x-3 p-3 rounded-md border border-gray-200 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800/50 transition-colors  ${
+                  hasSubmitted
+                    ? question.question.correct_answer == key
+                      ? "bg-success/20"
+                      : "bg-error/20"
+                    : "bg-transparent"
+                }`}
               >
                 <input
                   type="radio"
@@ -85,12 +91,15 @@ const QuestionCard = ({ question, subject }: QuestionCardProps) => {
                   value={key}
                   {...register("options")}
                   name="options"
-                  className="radio-accent radio-md radio"
+                  className={`radio-accent radio-md radio`}
                   required
+                  disabled={hasSubmitted}
                 />
                 <label
                   htmlFor={`option-${key}`}
-                  className="label flex-1 cursor-pointer whitespace-normal"
+                  className={`label flex-1 ${
+                    hasSubmitted ? "cursor-text" : "cursor-pointer"
+                  } whitespace-normal`}
                 >
                   <span className="font-bold mr-2">{key}.</span>
                   <MathMarkdown
