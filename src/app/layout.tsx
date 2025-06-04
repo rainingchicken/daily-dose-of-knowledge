@@ -24,9 +24,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-background">
+    <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased container mx-auto p-4 md:p-8 justify-center bg-background`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased container mx-auto p-4 md:p-8 justify-center`}
       >
         {children}
         <Footer />
