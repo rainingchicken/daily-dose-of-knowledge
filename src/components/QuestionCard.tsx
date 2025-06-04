@@ -91,7 +91,9 @@ const QuestionCard = ({ question, subject }: QuestionCardProps) => {
                   value={key}
                   {...register("options")}
                   name="options"
-                  className={`radio-accent radio-md radio`}
+                  className={`${
+                    subject === "math" ? "radio-accent" : "radio-warning"
+                  } radio-md radio`}
                   required
                   disabled={hasSubmitted}
                 />
@@ -116,7 +118,9 @@ const QuestionCard = ({ question, subject }: QuestionCardProps) => {
             {!hasSubmitted && (
               <button
                 type="submit"
-                className=" btn w-full btn-accent btn-outline"
+                className={`btn w-full ${
+                  subject === "math" ? "btn-accent" : "btn-warning"
+                } btn-outline`}
               >
                 Submit Answer
               </button>

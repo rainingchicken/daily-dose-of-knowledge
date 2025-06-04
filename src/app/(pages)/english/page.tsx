@@ -6,7 +6,7 @@ import QuestionCard from "@/components/QuestionCard";
 const page = () => {
   return (
     <>
-      <h1 className="text-center text-accent text-2xl font-bold m-5">
+      <h1 className="text-center text-warning text-2xl font-bold m-5">
         Daily Dose of English
       </h1>
       <Suspense fallback={<LoadingSkeleton />}>
