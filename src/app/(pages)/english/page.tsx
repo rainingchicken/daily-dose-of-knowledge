@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { getSATQuestions } from "@/utils/api";
+import { getSATQuestions, getStats } from "@/utils/api";
 import QuestionCard from "@/components/QuestionCard";
 import QuestionCardSkeleton from "@/components/QuestionCardLoadingSkeleton";
 
@@ -19,6 +19,9 @@ const page = () => {
 export default page;
 
 const MathQuestion = async () => {
-  const data = await getSATQuestions("english");
-  return <QuestionCard question={data} subject="english" />;
+  const subject = "english";
+  const question = await getSATQuestions(subject);
+  const stats = await getStats(subject);
+
+  return <QuestionCard question={question} subject="math" stats={stats} />;
 };

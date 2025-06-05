@@ -21,3 +21,11 @@ export interface IOptions {
   C: string;
   D: string;
 }
+
+export interface IStats {
+  [subject: string]: {
+    score: number;
+  };
+}
+
+export type ISubject = "math" | "english";

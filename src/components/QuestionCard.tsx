@@ -3,15 +3,17 @@
 import Image from "next/image";
 import { type FieldValues, useForm } from "react-hook-form";
 import MathMarkdown from "./MathMarkdown";
-import { IOptions, IQuestions } from "@/utils/types";
+import { IOptions, IQuestions, IStats } from "@/utils/types";
 import { useState } from "react";
+import Stats from "./Stats";
 
 interface QuestionCardProps {
   question: IQuestions;
   subject: "math" | "english";
+  stats?: IStats;
 }
 
-const QuestionCard = ({ question, subject }: QuestionCardProps) => {
+const QuestionCard = ({ question, subject, stats }: QuestionCardProps) => {
   const { register, handleSubmit } = useForm();
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
@@ -128,22 +130,31 @@ const QuestionCard = ({ question, subject }: QuestionCardProps) => {
           </div>
         </form>
         {hasSubmitted && (
-          <div
-            className={`card card-border ${
-              isCorrect ? "border-success" : "border-error"
-            } bg-base-100`}
-          >
-            <div className="card-body">
-              <h2
-                className={`card-title text-center justify-center ${
-                  isCorrect ? "text-success" : "text-error"
-                }`}
-              >
-                {isCorrect ? "Correct!" : "Wrong"}
-              </h2>
-              <MathMarkdown markdown={`${question.question.explanation}`} />
+          <>
+            <div
+              className={`card card-border ${
+                isCorrect ? "border-success" : "border-error"
+              } bg-base-100`}
+            >
+              <div className="card-body">
+                <h2
+                  className={`card-title text-center justify-center ${
+                    isCorrect ? "text-success" : "text-error"
+                  }`}
+                >
+                  {isCorrect ? "Correct!" : "Wrong"}
+                </h2>
+                <MathMarkdown markdown={`${question.question.explanation}`} />
+              </div>
             </div>
-          </div>
+            {stats && (
+              <Stats
+                stats={stats}
+                score={isCorrect ? 1 : 0}
+                subject={subject}
+              />
+            )}
+          </>
         )}
       </div>
     </div>
