@@ -23,5 +23,5 @@ const MathQuestion = async () => {
   const question = await getSATQuestions(subject);
   const stats = await getStats(subject);
 
-  return <QuestionCard question={question} subject="math" stats={stats} />;
+  return <QuestionCard question={question} subject={subject} stats={stats} />;
 };
