@@ -3,17 +3,16 @@
 import Image from "next/image";
 import { type FieldValues, useForm } from "react-hook-form";
 import MathMarkdown from "./MathMarkdown";
-import { IOptions, IQuestions, IStats } from "@/utils/types";
+import { IOptions, IQuestions, ISubject } from "@/utils/types";
 import { useState } from "react";
 import Stats from "./Stats";
 
 interface QuestionCardProps {
   question: IQuestions;
-  subject: "math" | "english";
-  stats?: IStats;
+  subject: ISubject;
 }
 
-const QuestionCard = ({ question, subject, stats }: QuestionCardProps) => {
+const QuestionCard = ({ question, subject }: QuestionCardProps) => {
   const { register, handleSubmit } = useForm();
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
@@ -147,15 +146,9 @@ const QuestionCard = ({ question, subject, stats }: QuestionCardProps) => {
                 <MathMarkdown markdown={`${question.question.explanation}`} />
               </div>
             </div>
-            {stats && (
-              <Stats
-                stats={stats}
-                score={isCorrect ? 1 : 0}
-                subject={subject}
-              />
-            )}
           </>
         )}
+        <Stats score={isCorrect ? 1 : 0} subject={subject} />
       </div>
     </div>
   );
