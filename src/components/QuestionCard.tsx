@@ -5,7 +5,7 @@ import { type FieldValues, useForm } from "react-hook-form";
 import MathMarkdown from "./MathMarkdown";
 import { IOptions, IQuestions, ISubject } from "@/utils/types";
 import { useState } from "react";
-import Stats from "./Stats";
+import StatsCard from "./StatsCard";
 
 interface QuestionCardProps {
   question: IQuestions;
@@ -146,9 +146,15 @@ const QuestionCard = ({ question, subject }: QuestionCardProps) => {
                 <MathMarkdown markdown={`${question.question.explanation}`} />
               </div>
             </div>
+            <StatsCard
+              score={isCorrect ? 1 : 0}
+              subject={subject}
+              category={question.domain}
+              difficulty={question.difficulty}
+              time={0}
+            />
           </>
         )}
-        <Stats score={isCorrect ? 1 : 0} subject={subject} />
       </div>
     </div>
   );

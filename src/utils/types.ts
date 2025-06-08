@@ -24,7 +24,23 @@ export interface IOptions {
 
 export interface IStats {
   [subject: string]: {
-    score: number;
+    categoryStats: {
+      [category: string]: {
+        score: number;
+        time: number;
+        questionCount: number;
+      };
+    };
+    difficultyStats: {
+      [difficulty: string]: {
+        score: number;
+        time: number;
+        questionCount: number;
+      };
+    };
+    played: boolean;
+    currentStreakCount: number;
+    maxStreakCount: number;
   };
 }
 
