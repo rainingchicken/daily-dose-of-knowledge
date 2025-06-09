@@ -1,3 +1,5 @@
+import StatsCardOverview from "@/components/StatsCardOverview";
+
 export default function Home() {
   return (
     <div className="card w-full max-w-3xl mx-auto shadow-md my-8 p-5">
@@ -14,7 +16,8 @@ export default function Home() {
             English Problem
           </a>
         </div>
-      </div>
+      </div>{" "}
+      <StatsCardOverview subject="math" />
     </div>
   );
 }

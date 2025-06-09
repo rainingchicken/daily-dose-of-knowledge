@@ -117,3 +117,25 @@ export function getBestAndWorst(statMap: { [key: string]: number }) {
     worst: sorted[sorted.length - 1][0],
   };
 }
+
+export function getTotalQuestionCount(stats: IStats) {
+  let totalQuestionCount = 0;
+  for (const subject in stats) {
+    const categoryStats = stats?.[subject]?.categoryStats;
+    if (!categoryStats) return 0;
+
+    for (const category in categoryStats) {
+      const { questionCount = 0 } = categoryStats[category];
+      totalQuestionCount += questionCount;
+    }
+  }
+  return totalQuestionCount;
+}
+
+export function getOverAllMaxStreak(stats: IStats) {
+  let maxStreakCount = 0;
+  for (const subject in stats) {
+    maxStreakCount = Math.max(stats?.[subject]?.maxStreakCount, maxStreakCount);
+  }
+  return maxStreakCount;
+}

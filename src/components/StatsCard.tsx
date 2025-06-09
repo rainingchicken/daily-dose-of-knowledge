@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { IStats, ISubject } from "@/utils/types";
 import { useLocalStorage } from "@/utils/localStorage";
-import { getAccuracyByCategory, getOverallAccuracy } from "@/utils/stats";
+import { getOverallAccuracy } from "@/utils/stats";
 
 interface StatsProps {
   score: number;
