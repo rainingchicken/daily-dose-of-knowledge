@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { IStats } from "./types";
+import type { IStats } from "./types";
 
 // Add constraint: T extends IStats
 function getStorageValue<T extends IStats>(key: string, defaultValue: T): T {

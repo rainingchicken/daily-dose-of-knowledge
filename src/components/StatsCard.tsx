@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import type { IStats, ISubject } from "@/utils/types";
 import { useLocalStorage } from "@/utils/localStorage";
 import { getOverallAccuracy } from "@/utils/stats";
+import StatsCardSimple from "./StatsCardSimple";
 
 interface StatsProps {
   score: number;
@@ -90,23 +91,14 @@ const StatsCard = ({
 
   if (!hasMounted) return null;
   return (
-    <div className="card card-border bg-base-100">
-      <div className="card-body">
-        <h2 className="card-title text-center justify-center">Stats</h2>
-        <h3 className="text-center justify-center">
-          Accuracy: {Math.round(overallAccuracy)}%
-        </h3>
-        <p className="text-center justify-center">
-          Total Time: {stats[subject].categoryStats[category].time}
-        </p>
-        <p className="text-center justify-center">
-          Current Streak: {stats[subject].currentStreakCount}
-        </p>
-        <p className="text-center justify-center">
-          Highest Streak: {stats[subject].maxStreakCount}
-        </p>
-      </div>
-    </div>
+    <StatsCardSimple
+      title="math"
+      totalQuestions={0}
+      accuracy={overallAccuracy}
+      currentStreak={stats[subject].currentStreakCount}
+      maxStreak={stats[subject].maxStreakCount}
+      totalTime={stats[subject].categoryStats[category].time}
+    />
   );
 };
 

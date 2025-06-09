@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { type FieldValues, useForm } from "react-hook-form";
 import MathMarkdown from "./MathMarkdown";
-import { IOptions, IQuestions, ISubject } from "@/utils/types";
+import type { IOptions, IQuestions, ISubject } from "@/utils/types";
 import { useState } from "react";
 import StatsCard from "./StatsCard";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocalStorage } from "@/utils/localStorage";
-import { IStats, ISubject } from "@/utils/types";
+import type { IStats } from "@/utils/types";
 import React from "react";
 
 import StatsCardSimple from "./StatsCardSimple";
@@ -10,12 +10,9 @@ import {
   getOverallAccuracy,
   getTotalQuestionCount,
 } from "@/utils/stats";
+import StatsCardComprehensive from "./StatsCardComprehensive";
 
-interface StatsCarddOverviewProp {
-  subject: ISubject;
-}
-
-const StatsCardOverview = ({ subject }: StatsCarddOverviewProp) => {
+const StatsCardOverview = () => {
   const [stats] = useLocalStorage<IStats>("stats", {});
   const totalQuestionCount = getTotalQuestionCount(stats);
   const mathAccuray = getOverallAccuracy(stats, "math");
@@ -24,15 +21,14 @@ const StatsCardOverview = ({ subject }: StatsCarddOverviewProp) => {
 
   return (
     <div>
-      <h2 className="text-primary text-center text-2xl font-bold m-5">
-        Statistics
-      </h2>
       <StatsCardSimple
         title="overall"
         totalQuestions={totalQuestionCount}
         accuracy={(mathAccuray + englishAccuray) / 2}
         maxStreak={overAllMaxStreak}
+        isOverview={true}
       />
+      <StatsCardComprehensive stats={stats} />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { IStats, ISubject } from "./types";
+import type { IStats, ISubject } from "./types";
 
 // Accuracy by Category
 export function getAccuracyByCategory(stats: IStats, subject: ISubject) {

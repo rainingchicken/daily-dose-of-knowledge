@@ -1,4 +1,4 @@
-import { IStats } from "@/utils/types";
+import type { IStats } from "@/utils/types";
 import React from "react";
 
 interface StatsCardComprehensiveProps {
