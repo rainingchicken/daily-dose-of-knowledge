@@ -16,8 +16,8 @@ export default function Home() {
             English Problem
           </a>
         </div>
-      </div>{" "}
-      <StatsCardOverview subject="math" />
+      </div>
+      <StatsCardOverview />
     </div>
   );
 }
