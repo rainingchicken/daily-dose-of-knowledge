@@ -1,34 +1,17 @@
-import type { IStats } from "@/utils/types";
+import type { IStats, ISubject } from "@/utils/types";
 import React from "react";
+import TabComponent from "./TabComponent";
 
 interface StatsCardComprehensiveProps {
-  stats: IStats;
+  stats?: IStats;
 }
+const subjects: ISubject[] = ["math", "english"];
 
 const StatsCardComprehensive = ({ stats }: StatsCardComprehensiveProps) => {
   return (
-    <div className="tabs tabs-border">
-      <input type="radio" name="my_tabs_2" className="tab" aria-label="Tab 1" />
-      <div className="tab-content border-base-300 bg-base-100 p-10">
-        Tab content 1
-      </div>
-
-      <input
-        type="radio"
-        name="my_tabs_2"
-        className="tab"
-        aria-label="Tab 2"
-        defaultChecked
-      />
-      <div className="tab-content border-base-300 bg-base-100 p-10">
-        Tab content 2
-      </div>
-
-      <input type="radio" name="my_tabs_2" className="tab" aria-label="Tab 3" />
-      <div className="tab-content border-base-300 bg-base-100 p-10">
-        Tab content 3
-      </div>
-    </div>
+    <>
+      <TabComponent subjects={subjects} />
+    </>
   );
 };
 

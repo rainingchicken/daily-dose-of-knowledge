@@ -91,14 +91,16 @@ const StatsCard = ({
 
   if (!hasMounted) return null;
   return (
-    <StatsCardSimple
-      title="math"
-      totalQuestions={0}
-      accuracy={overallAccuracy}
-      currentStreak={stats[subject].currentStreakCount}
-      maxStreak={stats[subject].maxStreakCount}
-      totalTime={stats[subject].categoryStats[category].time}
-    />
+    <>
+      <StatsCardSimple
+        title="math"
+        totalQuestions={0}
+        accuracy={overallAccuracy}
+        currentStreak={stats[subject].currentStreakCount}
+        maxStreak={stats[subject].maxStreakCount}
+        totalTime={stats[subject].categoryStats[category].time}
+      />
+    </>
   );
 };
 

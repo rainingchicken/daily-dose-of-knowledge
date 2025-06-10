@@ -29,8 +29,8 @@ const StatsCardSimple = ({
   return (
     <div className="card bg-base-100 shadow-sm">
       <div className="card-body ">
-        <h2 className={`card-title text-primary`}>
-          {title.toUpperCase()} STATS
+        <h2 className={`card-title text-primary justify-center`}>
+          {title.toUpperCase()} STATISTICS
         </h2>
         <div className={`stats shadow ${isOverview ? "" : " stats-vertical"}`}>
           <div className="stat">

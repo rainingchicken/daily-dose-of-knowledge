@@ -6,6 +6,8 @@ import MathMarkdown from "./MathMarkdown";
 import type { IOptions, IQuestions, ISubject } from "@/utils/types";
 import { useState } from "react";
 import StatsCard from "./StatsCard";
+import Link from "next/link";
+import { CircleChevronRight } from "lucide-react";
 
 interface QuestionCardProps {
   question: IQuestions;
@@ -153,6 +155,11 @@ const QuestionCard = ({ question, subject }: QuestionCardProps) => {
               difficulty={question.difficulty}
               time={0}
             />
+            <Link href={`/stats?tab${subject}`}>
+              <span className="flex gap-1 btn btn-ghost">
+                View detailed statistics <CircleChevronRight />
+              </span>
+            </Link>
           </>
         )}
       </div>
