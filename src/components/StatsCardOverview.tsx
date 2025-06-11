@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocalStorage } from "@/utils/localStorage";
-import type { IStats } from "@/utils/types";
+import type { IStats, ISubject } from "@/utils/types";
 import React from "react";
 import StatsCardSimple from "./StatsCardSimple";
 import {
@@ -14,7 +14,14 @@ import { CircleChevronRight } from "lucide-react";
 
 const StatsCardOverview = () => {
   const [stats] = useLocalStorage<IStats>("stats", {});
-  const totalQuestionCount = getTotalQuestionCount(stats);
+  const totalQuestionCount = () => {
+    let totalQuestionCount = 0;
+    for (const subject in stats) {
+      totalQuestionCount += getTotalQuestionCount(stats, subject as ISubject);
+    }
+    return totalQuestionCount;
+  };
+
   const mathAccuray = getOverallAccuracy(stats, "math");
   const englishAccuray = getOverallAccuracy(stats, "english");
   const overAllMaxStreak = getOverAllMaxStreak(stats);
@@ -23,7 +30,7 @@ const StatsCardOverview = () => {
     <>
       <StatsCardSimple
         title="overall"
-        totalQuestions={totalQuestionCount}
+        totalQuestions={totalQuestionCount()}
         accuracy={(mathAccuray + englishAccuray) / 2}
         maxStreak={overAllMaxStreak}
         isOverview={true}

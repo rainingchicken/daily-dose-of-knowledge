@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ISubject } from "@/utils/types";
 
+import StatsCardComprehensive from "./StatsCardComprehensive";
+
 interface TabComponentProps {
   subjects: ISubject[];
 }
@@ -34,7 +36,7 @@ const TabComponent = ({ subjects }: TabComponentProps) => {
   };
 
   return (
-    <div className="tabs tabs-border flex justify-center">
+    <div className="tabs tabs-border flex justify-center max-w-3xl m-auto">
       {subjects.map((subject) => (
         <React.Fragment key={subject}>
           <input
@@ -47,7 +49,7 @@ const TabComponent = ({ subjects }: TabComponentProps) => {
           />
           {selectedTab === subject && (
             <div className="tab-content border-base-300 bg-base-100 p-10">
-              {subject.toUpperCase()} STATS
+              <StatsCardComprehensive subject={subject} />
             </div>
           )}
         </React.Fragment>

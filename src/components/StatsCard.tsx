@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { IStats, ISubject } from "@/utils/types";
 import { useLocalStorage } from "@/utils/localStorage";
-import { getOverallAccuracy } from "@/utils/stats";
+import { getOverallAccuracy, getTotalQuestionCount } from "@/utils/stats";
 import StatsCardSimple from "./StatsCardSimple";
 
 interface StatsProps {
@@ -88,13 +88,14 @@ const StatsCard = ({
   }, [subject, category, difficulty, score, time, setStats]);
 
   const overallAccuracy = getOverallAccuracy(stats, subject);
+  const totalQuestionCount = getTotalQuestionCount(stats, subject);
 
   if (!hasMounted) return null;
   return (
     <>
       <StatsCardSimple
         title="math"
-        totalQuestions={0}
+        totalQuestions={totalQuestionCount}
         accuracy={overallAccuracy}
         currentStreak={stats[subject].currentStreakCount}
         maxStreak={stats[subject].maxStreakCount}

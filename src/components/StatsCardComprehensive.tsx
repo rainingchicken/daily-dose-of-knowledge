@@ -1,16 +1,25 @@
+"use client";
+
 import type { IStats, ISubject } from "@/utils/types";
 import React from "react";
-import TabComponent from "./TabComponent";
+import Table from "./Table";
+import { useLocalStorage } from "@/utils/localStorage";
+import { getBestAndWorst } from "@/utils/stats";
 
-interface StatsCardComprehensiveProps {
-  stats?: IStats;
+interface StatsCardComprehensiveProp {
+  subject: ISubject;
 }
-const subjects: ISubject[] = ["math", "english"];
 
-const StatsCardComprehensive = ({ stats }: StatsCardComprehensiveProps) => {
+const StatsCardComprehensive = ({ subject }: StatsCardComprehensiveProp) => {
+  const [stats] = useLocalStorage<IStats>("stats", {});
+  const bestWorst = getBestAndWorst(stats, subject);
   return (
     <>
-      <TabComponent subjects={subjects} />
+      <h2>Best Category</h2>
+      <h3>{bestWorst.categoryResult.best}</h3>
+      <h2>Worst Category</h2>
+      <h3>{bestWorst.categoryResult.worst}</h3>
+      <Table stats={stats} subject={subject} />
     </>
   );
 };

@@ -1,5 +1,8 @@
-import StatsCardComprehensive from "@/components/StatsCardComprehensive";
+import TabComponent from "@/components/TabComponent";
+import { ISubject } from "@/utils/types";
 import React from "react";
+
+const subjects: ISubject[] = ["math", "english"];
 
 const page = () => {
   return (
@@ -7,7 +10,7 @@ const page = () => {
       <h1 className="text-center text-primary text-2xl font-bold m-5">
         Statistics
       </h1>
-      <StatsCardComprehensive />
+      <TabComponent subjects={subjects} />
     </div>
   );
 };
