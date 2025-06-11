@@ -19,35 +19,6 @@ export function getMasteryScoresByCategory({
   return Math.round(mastery * 100);
 }
 
-// Mastery Score by Difficulty
-export function getMasteryScoresByDifficulty(stats: IStats, subject: ISubject) {
-  const difficultyStats = stats?.[subject]?.difficultyStats;
-  if (!difficultyStats) return {};
-
-  const result: { [key: string]: number } = {};
-
-  for (const difficulty in difficultyStats) {
-    const {
-      score = 0,
-      questionCount = 0,
-      time = 0,
-    } = difficultyStats[difficulty] || {};
-    if (questionCount === 0) {
-      result[difficulty] = 0;
-      continue;
-    }
-
-    const accuracy = score / questionCount;
-    const avgTime = time / questionCount;
-    const timePenalty = Math.min(avgTime / 60, 1);
-    const mastery = accuracy * (1 - timePenalty);
-
-    result[difficulty] = mastery * 100;
-  }
-
-  return result;
-}
-
 // Overall Accuracy Per Subject
 export function getOverallAccuracy(stats: IStats, subject: ISubject): number {
   const categoryStats = stats?.[subject]?.categoryStats;
@@ -68,28 +39,17 @@ export function getOverallAccuracy(stats: IStats, subject: ISubject): number {
 // Best and Worst of a stats category
 export function getBestAndWorst(stats: IStats, subject: ISubject) {
   const categoryEntries = Object.entries(stats[subject].categoryStats);
-  const difficultyEntries = Object.entries(stats[subject].difficultyStats);
 
   let categoryResult;
-  let difficultyResult;
 
   if (!categoryEntries) categoryResult = { best: "No data", worst: "No Data" };
-  if (!difficultyEntries)
-    difficultyResult = { best: "No data", worst: "No Data" };
 
   const sortedCategory = categoryEntries.sort((a: any, b: any) => b[1] - a[1]);
-  const sortedDiffculty = difficultyEntries.sort(
-    (a: any, b: any) => b[1] - a[1]
-  );
 
   return {
     categoryResult: {
       best: sortedCategory[0][0],
       worst: sortedCategory[sortedCategory.length - 1][0],
-    },
-    difficultyResult: {
-      best: sortedDiffculty[0][0],
-      worst: sortedDiffculty[sortedDiffculty.length - 1][0],
     },
   };
 }
