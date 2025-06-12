@@ -24,7 +24,7 @@ const Table = ({ stats, subject }: TableProps) => {
         <thead>
           <tr>
             <th></th>
-            {columns && columns.map((column) => <th>{column}</th>)}
+            {columns && columns.map((column) => <th key={column}>{column}</th>)}
           </tr>
         </thead>
         <tbody>

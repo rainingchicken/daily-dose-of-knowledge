@@ -40,11 +40,12 @@ export function getOverallAccuracy(stats: IStats, subject: ISubject): number {
 export function getBestAndWorst(stats: IStats, subject: ISubject) {
   const categoryEntries = Object.entries(stats[subject].categoryStats);
 
-  let categoryResult;
+  if (categoryEntries.length === 0)
+    return { categoryResult: { best: "No data", worst: "No Data" } };
 
-  if (!categoryEntries) categoryResult = { best: "No data", worst: "No Data" };
-
-  const sortedCategory = categoryEntries.sort((a: any, b: any) => b[1] - a[1]);
+  const sortedCategory = categoryEntries.sort(
+    (a, b) => b[1].score - a[1].score
+  );
 
   return {
     categoryResult: {
