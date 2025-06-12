@@ -6,6 +6,7 @@ import {
   Timer,
 } from "lucide-react";
 import React from "react";
+import { formatTime } from "./CountUpTimer";
 
 interface StatsCardSimpleProps {
   title: string;
@@ -58,7 +59,9 @@ const StatsCardSimple = ({
                   <Timer className="h-8 w-8 text-info" />
                 </div>
                 <div className="stat-title">Time</div>
-                <div className="stat-value text-info">{totalTime}</div>
+                <div className="stat-value text-info">
+                  {formatTime(totalTime as number)}
+                </div>
               </div>
 
               <div className="stat">

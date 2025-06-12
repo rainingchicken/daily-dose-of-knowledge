@@ -8,6 +8,7 @@ import { useState } from "react";
 import StatsCard from "./StatsCard";
 import Link from "next/link";
 import { CircleChevronRight } from "lucide-react";
+import CountUpTimer from "./CountUpTimer";
 
 interface QuestionCardProps {
   question: IQuestions;
@@ -18,6 +19,7 @@ const QuestionCard = ({ question, subject }: QuestionCardProps) => {
   const { register, handleSubmit } = useForm();
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const [time, setTime] = useState(0);
 
   const handleSubmitForm = (data: FieldValues) => {
     if (data.options === question.question.correct_answer) {
@@ -43,6 +45,7 @@ const QuestionCard = ({ question, subject }: QuestionCardProps) => {
 
   return (
     <div className="card w-full max-w-3xl mx-auto shadow-md my-8 p-5">
+      <CountUpTimer time={time} setTime={setTime} hasSubmitted={hasSubmitted} />
       <div className="card-title flex flex-row items-center justify-between pb-2 space-y-0 flex-wrap">
         <div className="badge px-3 py-1 badge-dash">{question.domain}</div>
         <div
@@ -153,7 +156,7 @@ const QuestionCard = ({ question, subject }: QuestionCardProps) => {
               subject={subject}
               category={question.domain}
               difficulty={question.difficulty}
-              time={0}
+              time={time}
             />
             <Link href={`/stats?tab${subject}`}>
               <span className="flex gap-1 btn btn-ghost">

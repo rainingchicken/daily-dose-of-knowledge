@@ -99,7 +99,7 @@ const StatsCard = ({
         accuracy={overallAccuracy}
         currentStreak={stats[subject].currentStreakCount}
         maxStreak={stats[subject].maxStreakCount}
-        totalTime={stats[subject].categoryStats[category].time}
+        totalTime={time}
       />
     </>
   );
