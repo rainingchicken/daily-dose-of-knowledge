@@ -27,9 +27,9 @@ https://github.com/Anas099X/OpenSAT?tab=readme-ov-file
 
 ## ScreenShots
 
-![Home page with nav and overall stats](<Screenshot 2025-06-11 200935.png>)
-![Math problem example](<Screenshot 2025-06-11 195926.png>)
-![Explaination for problem and statistics](<Screenshot 2025-06-11 195941.png>)
-![Detailed stats](<Screenshot 2025-06-11 205607.png>)  
-![English problem example](<Screenshot 2025-06-11 200038.png>)
-![Empty stats](<Screenshot 2025-06-11 200014.png>)
+![Home page with nav and overall stats](<public/screenshots/Screenshot 2025-06-11 200935.png>)
+![Math problem example](<public/screenshots/Screenshot 2025-06-11 195926.png>)
+![Explaination for problem and statistics](<public/screenshots/Screenshot 2025-06-11 195941.png>)
+![Detailed stats](<public/screenshots/Screenshot 2025-06-11 205607.png>)
+![English problem example](<public/screenshots/Screenshot 2025-06-11 200038.png>)
+![Empty stats](<public/screenshots/Screenshot 2025-06-11 200014.png>)
