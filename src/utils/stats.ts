@@ -46,7 +46,7 @@ export function getBestAndWorst(stats: IStats, subject: ISubject) {
     return { categoryResult: { best: "No data", worst: "No Data" } };
 
   const sortedCategory = categoryEntries.sort(
-    (a, b) => b[1].score - a[1].score
+    (a, b) => b[1].score / b[1].questionCount - a[1].score / a[1].questionCount
   );
 
   return {
