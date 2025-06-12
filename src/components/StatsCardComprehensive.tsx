@@ -17,6 +17,8 @@ const StatsCardComprehensive = ({ subject }: StatsCardComprehensiveProp) => {
   if (Object.keys(stats).length === 0)
     return <h2 className="text-center">No Data</h2>;
 
+  if (!stats[subject]) return <h2 className="text-center">No Data</h2>;
+
   const bestWorst = getBestAndWorst(stats, subject);
   return (
     <>
