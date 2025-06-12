@@ -5,12 +5,14 @@ type Category = {
   time: number;
   questionCount: number;
 };
+
 // Mastery Score by Category
 export function getMasteryScoresByCategory({
   score,
   time,
   questionCount,
 }: Category) {
+  if (!score && !time && !questionCount) return 0;
   const accuracy = score / questionCount;
   const avgTime = time / questionCount;
   const timePenalty = Math.min(avgTime / 60, 1);

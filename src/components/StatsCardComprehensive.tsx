@@ -13,6 +13,10 @@ interface StatsCardComprehensiveProp {
 
 const StatsCardComprehensive = ({ subject }: StatsCardComprehensiveProp) => {
   const [stats] = useLocalStorage<IStats>("stats", {});
+
+  if (Object.keys(stats).length === 0)
+    return <h2 className="text-center">No Data</h2>;
+
   const bestWorst = getBestAndWorst(stats, subject);
   return (
     <>
