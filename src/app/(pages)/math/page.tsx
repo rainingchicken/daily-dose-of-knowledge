@@ -2,6 +2,12 @@ import React, { Suspense } from "react";
 import { getSATQuestion } from "@/utils/api";
 import QuestionCard from "@/components/QuestionCard";
 import QuestionCardSkeleton from "@/components/QuestionCardLoadingSkeleton";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Math Problem",
+  description: "Page to practice a math problem",
+};
 
 const page = () => {
   return (

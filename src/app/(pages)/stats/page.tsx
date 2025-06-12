@@ -1,7 +1,13 @@
 import StatsCardSkeleton from "@/components/StatsCardLoadingSkeleton";
 import TabComponent from "@/components/TabComponent";
 import { ISubject } from "@/utils/types";
+import { Metadata } from "next";
 import React, { Suspense } from "react";
+
+export const metadata: Metadata = {
+  title: "Stats",
+  description: "Detailed user stats",
+};
 
 const subjects: ISubject[] = ["math", "english"];
 

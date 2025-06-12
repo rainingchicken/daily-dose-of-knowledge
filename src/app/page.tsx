@@ -1,4 +1,10 @@
 import StatsCardOverview from "@/components/StatsCardOverview";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description: "Navigation and overview stats",
+};
 
 export default function Home() {
   return (
