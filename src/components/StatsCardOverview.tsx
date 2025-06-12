@@ -22,8 +22,15 @@ const StatsCardOverview = () => {
     return totalQuestionCount;
   };
 
-  const mathAccuray = getOverallAccuracy(stats, "math");
-  const englishAccuray = getOverallAccuracy(stats, "english");
+  const overallAccuracy = () => {
+    let overallAccuracy = 0;
+    for (const subject in stats) {
+      overallAccuracy += getOverallAccuracy(stats, subject as ISubject);
+    }
+
+    return overallAccuracy / Object.keys(stats).length;
+  };
+
   const overAllMaxStreak = getOverAllMaxStreak(stats);
 
   return (
@@ -31,7 +38,7 @@ const StatsCardOverview = () => {
       <StatsCardSimple
         title="overall"
         totalQuestions={totalQuestionCount()}
-        accuracy={(mathAccuray + englishAccuray) / 2}
+        accuracy={overallAccuracy()}
         maxStreak={overAllMaxStreak}
         isOverview={true}
       />
