@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Daily Dose of Knowledge
 
-## Getting Started
+https://daily-dose-of-knowledge.netlify.app
 
-First, run the development server:
+I have been getting a lot of shorts showing how to solve problems from the SAT recently so I wanted to make an app to get random problems and solve them.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## API
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+https://github.com/Anas099X/OpenSAT?tab=readme-ov-file
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+[Anas099X](https://github.com/Anas099X) <- API creator
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Tech
 
-## Learn More
+- NEXT.JS
+- TypeScript
+- DaisyUI
+- useForm
+- react-markdown
+- localStorage
 
-To learn more about Next.js, take a look at the following resources:
+## Todo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- add acccessbility settings to change themes, fontsize, etc
+- maybe the ability to revisit completed questions
+- a button to report question or contest for points in case "correct answer" is wrong
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ScreenShots
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+![Home page with nav and overall stats](<Screenshot 2025-06-11 200935.png>)
+![Math problem example](<Screenshot 2025-06-11 195926.png>)
+![Explaination for problem and statistics](<Screenshot 2025-06-11 195941.png>)
+![Detailed stats](<Screenshot 2025-06-11 205607.png>)  
+![English problem example](<Screenshot 2025-06-11 200038.png>)
+![Empty stats](<Screenshot 2025-06-11 200014.png>)
