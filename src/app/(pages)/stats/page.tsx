@@ -1,6 +1,7 @@
+import StatsCardSkeleton from "@/components/StatsCardLoadingSkeleton";
 import TabComponent from "@/components/TabComponent";
 import { ISubject } from "@/utils/types";
-import React from "react";
+import React, { Suspense } from "react";
 
 const subjects: ISubject[] = ["math", "english"];
 
@@ -10,7 +11,9 @@ const page = () => {
       <h1 className="text-center text-primary text-2xl font-bold m-5">
         Statistics
       </h1>
-      <TabComponent subjects={subjects} />
+      <Suspense fallback={<StatsCardSkeleton />}>
+        <TabComponent subjects={subjects} />
+      </Suspense>
     </div>
   );
 };
